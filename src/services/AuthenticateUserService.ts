@@ -1,5 +1,6 @@
 import { getRepository } from 'typeorm';
 import { compare } from 'bcryptjs';
+import { sign } from 'jsonwebtoken';
 import User from '../models/User';
 
 interface Request {
@@ -8,6 +9,7 @@ interface Request {
 }
 interface Response {
   user: User;
+  token: string;
 }
 
 class AuthenticateUserService {
@@ -20,13 +22,19 @@ class AuthenticateUserService {
       throw new Error('Incorrect email/password combination');
     }
 
+    // Para gerar o md5 pode ser feito no site http://www.md5.cz/
+    const token = sign({}, 'a1976d3e3fac8f77b5e13265a6d0720f', {
+      subject: user.id,
+      expiresIn: '1d',
+    });
+
     const passwordMatched = await compare(password, user.password);
 
     if (!passwordMatched) {
       throw new Error('Incorrect email/password combination');
     }
 
-    return { user };
+    return { user, token };
   }
 }
 
