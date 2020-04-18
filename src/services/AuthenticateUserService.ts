@@ -2,6 +2,7 @@ import { getRepository } from 'typeorm';
 import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
 import User from '../models/User';
+import authConfig from '../config/auth';
 
 interface Request {
   email: string;
@@ -22,10 +23,11 @@ class AuthenticateUserService {
       throw new Error('Incorrect email/password combination');
     }
 
-    // Para gerar o md5 pode ser feito no site http://www.md5.cz/
-    const token = sign({}, 'a1976d3e3fac8f77b5e13265a6d0720f', {
+    const { secret, expiresIn } = authConfig.jwt;
+
+    const token = sign({}, secret, {
       subject: user.id,
-      expiresIn: '1d',
+      expiresIn,
     });
 
     const passwordMatched = await compare(password, user.password);
