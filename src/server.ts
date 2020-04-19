@@ -4,7 +4,7 @@ import 'express-async-errors';
 import routes from './routes';
 import uploadConfig from './config/updload';
 import './database';
-import AppError from './erros/AppError';
+import AppError from './errors/AppError';
 
 const app = express();
 
