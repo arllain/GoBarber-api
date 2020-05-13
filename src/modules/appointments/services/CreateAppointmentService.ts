@@ -32,7 +32,7 @@ class CreateAppointmentService {
       throw new AppError('You cannot create an appointment with yourself');
     }
 
-    if (getHours(appointmentDate) < 8 && getHours(appointmentDate) > 17) {
+    if (getHours(appointmentDate) < 8 || getHours(appointmentDate) > 17) {
       throw new AppError(
         'You can only create an appointment between 8am and 5pm',
       );
@@ -41,6 +41,8 @@ class CreateAppointmentService {
     const findAppointmentInSameDate = await this.appointmentsRepository.findByDate(
       appointmentDate,
     );
+
+    console.log(findAppointmentInSameDate);
 
     if (findAppointmentInSameDate) {
       throw new AppError('This appointment is already booked');
