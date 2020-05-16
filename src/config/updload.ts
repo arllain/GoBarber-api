@@ -3,6 +3,7 @@ import multer from 'multer';
 import crypto from 'crypto';
 
 const tmpFolder = path.resolve(__dirname, '..', '..', 'tmp');
+console.log(tmpFolder);
 
 export default {
   tmpFolder,
