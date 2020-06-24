@@ -32,6 +32,7 @@
   <a href="#%EF%B8%8F-about-the-project">About</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-getting-started">Getting started</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-running-tests">Running tests</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-license">License</a>
 </p>
 
@@ -129,6 +130,14 @@ $ yarn dev:server
 
 # Well done, project is started!
 ```
+
+## 🔧 Running the tests <a name = "tests"></a>
+```bash
+# Run the jest tests
+$ yarn test
+
+```
+
 
 ## 📝 License
 
