@@ -131,7 +131,7 @@ $ yarn dev:server
 # Well done, project is started!
 ```
 
-## 🔧 Running the tests <a name = "tests"></a>
+## 🔧 Running tests
 ```bash
 # Run the jest tests
 $ yarn test
